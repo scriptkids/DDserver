@@ -14,6 +14,8 @@ int server_start( void ){
 	if( fd == -1 )
 		err_exit("Can't get socket");
 
+	setsockopt(fd, SOL_SOCKET, SO_REUSEADDR, &setsockoptflag, setsockoptflag );
+
 	servaddr.sin_family = AF_INET;
 	servaddr.sin_port = htons(server_port);
 	servaddr.sin_addr.s_addr = htonl( INADDR_ANY );
